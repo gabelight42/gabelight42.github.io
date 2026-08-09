@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gabe Light | Data & Business Analytics</title>
+<style>
+  :root {
+    --gold: #9e7e38;
+    --gold-dark: #7a611f;
+    --ink: #14151a;
+    --gray: #5b5f6b;
+    --line: #e7e5df;
+    --bg: #fafaf8;
+    --card: #ffffff;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+  }
+  a { color: var(--gold-dark); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+  header.nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(250,250,248,0.9);
+    backdrop-filter: saturate(180%) blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 980px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .brand { font-weight: 700; letter-spacing: 0.02em; }
+  .nav-links { display: flex; gap: 22px; font-size: 14px; }
+  .nav-links a { color: var(--ink); }
+  @media (max-width: 640px) {
+    .nav-links { gap: 12px; font-size: 12.5px; }
+  }
+  .hero {
+    padding: 72px 0 56px;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow {
+    text-transform: uppercase; letter-spacing: 0.14em; font-size: 12px;
+    color: var(--gold-dark); font-weight: 700; margin-bottom: 14px;
+  }
+  h1 { font-size: 40px; margin: 0 0 12px; line-height: 1.15; }
+  .hero p.lede { font-size: 18px; color: var(--gray); max-width: 640px; margin: 0 0 26px; }
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 11px 20px; border-radius: 999px;
+    font-size: 14px; font-weight: 600; border: 1px solid var(--ink);
+  }
+  .btn.primary { background: var(--ink); color: #fff; }
+  .btn.primary:hover { background: #000; text-decoration: none; }
+  .btn.ghost { background: transparent; color: var(--ink); }
+  .btn.ghost:hover { background: var(--ink); color: #fff; text-decoration: none; }
+  section { padding: 56px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+  h2 { font-size: 26px; margin: 0 0 8px; }
+  .section-sub { color: var(--gray); margin: 0 0 28px; max-width: 680px; }
+  .narrative-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+  }
+  .narrative-card {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 22px 24px;
+  }
+  .narrative-card h3 { margin: 0 0 8px; font-size: 15px; color: var(--gold-dark); text-transform: uppercase; letter-spacing: 0.06em; }
+  .narrative-card p { margin: 0; color: var(--ink); }
+  .bridge {
+    text-align: center; font-size: 20px; color: var(--gray); margin: 18px 0;
+  }
+  @media (max-width: 720px) {
+    .narrative-grid { grid-template-columns: 1fr; }
+  }
+  .video-box {
+    background: var(--card); border: 1px dashed #c9c5b8; border-radius: var(--radius);
+    aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center;
+    flex-direction: column; text-align: center; color: var(--gray); padding: 24px;
+  }
+  .video-box .icon { font-size: 34px; margin-bottom: 10px; }
+  .resume-panel {
+    display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; align-items: start;
+  }
+  .resume-embed {
+    border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+    background: var(--card); height: 480px;
+  }
+  .resume-embed iframe { width: 100%; height: 100%; border: 0; }
+  .resume-side { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+  .resume-side h3 { margin-top: 0; font-size: 16px; }
+  .resume-side ul { margin: 0; padding-left: 18px; color: var(--gray); font-size: 14px; }
+  .resume-side li { margin-bottom: 6px; }
+  @media (max-width: 720px) {
+    .resume-panel { grid-template-columns: 1fr; }
+    .resume-embed { height: 380px; }
+  }
+  .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .project-card {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 22px 24px;
+  }
+  .project-card .tag {
+    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--gold-dark); background: #f4efe1;
+    padding: 3px 9px; border-radius: 999px; margin-bottom: 10px;
+  }
+  .project-card h3 { margin: 0 0 10px; font-size: 18px; }
+  .project-card .row { margin: 10px 0 0; font-size: 13.5px; }
+  .project-card .row b { color: var(--ink); }
+  .project-card .row span { color: var(--gray); }
+  .project-card.placeholder {
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    border-style: dashed; color: var(--gray); min-height: 180px;
+  }
+  @media (max-width: 720px) { .project-grid { grid-template-columns: 1fr; } }
+  .insight-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .insight-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+  .insight-card h4 { margin: 0 0 8px; font-size: 15px; }
+  .insight-card p { margin: 0; font-size: 14px; color: var(--gray); }
+  @media (max-width: 720px) { .insight-grid { grid-template-columns: 1fr; } }
+  .pill-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .pill {
+    background: var(--card); border: 1px solid var(--line); padding: 7px 14px;
+    border-radius: 999px; font-size: 13.5px;
+  }
+  footer {
+    padding: 40px 0 60px; text-align: center; color: var(--gray); font-size: 14px;
+  }
+  footer a { color: var(--gray); }
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand">Gabe Light</div>
+    <nav class="nav-links">
+      <a href="#narrative">Narrative</a>
+      <a href="#video">Video</a>
+      <a href="#resume">Resume</a>
+      <a href="#projects">Projects</a>
+      <a href="#awareness">Industry Lens</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Hybrid Track &middot; Sports Analytics → Business &amp; Consulting Analytics</div>
+    <h1>Gabe Light</h1>
+    <p class="lede">Data Analyst and MS Business Analytics candidate at Wake Forest, translating high-stakes sports analytics work into decision-ready insight for business and consulting environments.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="#resume">View Resume</a>
+      <a class="btn ghost" href="#projects">See Projects</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/gabe-light" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
+<section id="narrative">
+  <div class="wrap">
+    <h2>Track Alignment &amp; Narrative</h2>
+    <p class="section-sub">Hybrid Track: bridging proven experience with a newly defined target market.</p>
+    <div class="narrative-grid">
+      <div class="narrative-card">
+        <h3>Where I've built my edge</h3>
+        <p>As a Data Analyst for Wake Forest Baseball, I build predictive models (XGBoost, nested modeling) and automated reporting pipelines that give coaches and players decision support under real time pressure &mdash; the same core skill set that drives business analytics: turning ambiguous data into a clear recommendation for a non-technical decision-maker.</p>
+      </div>
+      <div class="narrative-card">
+        <h3>Where I'm headed</h3>
+        <p>I'm applying that foundation &mdash; statistical modeling, stakeholder communication, and automation &mdash; to business and consulting analytics, where the same discipline (structured problem-solving, translating models into a narrative, and working against a deadline) is what separates an analyst from an advisor.</p>
+      </div>
+    </div>
+    <p class="bridge">Sports Analytics Experience &nbsp;&rarr;&nbsp; Transferable Skills &nbsp;&rarr;&nbsp; Business &amp; Consulting Analytics</p>
+  </div>
+</section>
+<section id="video">
+  <div class="wrap">
+    <h2>Video Introduction</h2>
+    <p class="section-sub">Placeholder &mdash; drop in an embed code (YouTube/Vimeo/Loom) when your video is ready.</p>
+    <div class="video-box">
+      <div class="icon">&#127909;</div>
+      <div><strong>Video coming soon</strong></div>
+      <div style="font-size:13px; margin-top:6px;">Replace this box with an &lt;iframe&gt; embed once recorded.</div>
+    </div>
+  </div>
+</section>
+<section id="resume">
+  <div class="wrap">
+    <h2>Resume</h2>
+    <p class="section-sub">Full resume viewable below, or download the PDF directly.</p>
+    <div class="resume-panel">
+      <div class="resume-embed">
+        <iframe src="resume.pdf" title="Gabe Light Resume"></iframe>
+      </div>
+      <div class="resume-side">
+        <h3>Quick facts</h3>
+        <ul>
+          <li>MS in Business Analytics &mdash; Wake Forest University School of Business, May 2027</li>
+          <li>BS in Statistics, Minor in Mathematics &mdash; Wake Forest University, May 2026</li>
+          <li>Data Analyst, Wake Forest Baseball (Aug 2023&ndash;Present)</li>
+          <li>Draft Process Assistant, MLB Agent Aid (May&ndash;Jun 2025)</li>
+        </ul>
+        <p style="margin-top:16px;">
+          <a class="btn primary" href="resume.pdf" download>Download PDF</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="projects">
+  <div class="wrap">
+    <h2>Work Evidence &amp; Projects</h2>
+    <p class="section-sub">Selected analytics work &mdash; context, role, and measurable outcome for each.</p>
+    <div class="project-grid">
+      <div class="project-card">
+        <span class="tag">Predictive Modeling</span>
+        <h3>xRV (Expected Run Value) Model Revamp</h3>
+        <div class="row"><b>Context:</b> <span>Wake Forest Baseball's run-value framework needed to move beyond legacy heuristics.</span></div>
+        <div class="row"><b>Role:</b> <span>Rebuilt the framework using XGBoost and nested modeling, combining multiple probability models into one pitch-level estimate.</span></div>
+        <div class="row"><b>Outcome:</b> <span>Improved predictive accuracy by 10% over the previous model.</span></div>
+      </div>
+      <div class="project-card">
+        <span class="tag">Data Visualization</span>
+        <h3>Expected Run Value Heat Map</h3>
+        <div class="row"><b>Context:</b> <span>Coaches needed a fast, visual read on opposing hitters before games.</span></div>
+        <div class="row"><b>Role:</b> <span>Built automated, player-specific heat maps on top of the revamped xRV model.</span></div>
+        <div class="row"><b>Outcome:</b> <span>Enhanced advance scouting turnaround for coaching staff.</span></div>
+      </div>
+      <div class="project-card">
+        <span class="tag">Applied Analytics</span>
+        <h3>Matchup Matrix</h3>
+        <div class="row"><b>Context:</b> <span>In-game decisions needed a quick pitcher-vs-hitter comparison.</span></div>
+        <div class="row"><b>Role:</b> <span>Modeled automated matchups between Wake Forest pitchers and opposing hitters with a clean visualization layer.</span></div>
+        <div class="row"><b>Outcome:</b> <span>Supported high-leverage, in-game coaching decisions.</span></div>
+      </div>
+      <div class="project-card placeholder">
+        <div>+ Add your next project here<br><span style="font-size:12.5px;">(business/consulting case study, MSBA coursework project, etc.)</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="awareness">
+  <div class="wrap">
+    <h2>Commercial Awareness</h2>
+    <p class="section-sub">How I read the market I'm moving into.</p>
+    <div class="insight-grid">
+      <div class="insight-card">
+        <h4>Analytics is now a business function</h4>
+        <p>Organizations increasingly expect analytics teams to advise decisions directly, not just report numbers &mdash; the same shift from reporting to recommendation I've lived in sports analytics.</p>
+      </div>
+      <div class="insight-card">
+        <h4>Consulting demand for translators</h4>
+        <p>Firms need people who can move between technical modeling and executive-level communication &mdash; a skill built from presenting model output to coaches and MLB scouts under time pressure.</p>
+      </div>
+      <div class="insight-card">
+        <h4>Automation as a differentiator</h4>
+        <p>Automated pipelines that shrink turnaround time are increasingly a competitive edge in both sports operations and business analytics engagements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <h2>Skills</h2>
+    <div class="pill-row">
+      <span class="pill">Predictive Modeling</span>
+      <span class="pill">Machine Learning</span>
+      <span class="pill">Feature Engineering</span>
+      <span class="pill">Data Visualization</span>
+      <span class="pill">Statistical Analysis</span>
+      <span class="pill">Data Automation</span>
+      <span class="pill">R &middot; Python &middot; SQL &middot; Java</span>
+      <span class="pill">R Shiny</span>
+      <span class="pill">Stakeholder Communication</span>
+    </div>
+  </div>
+</section>
+<section id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p class="section-sub">Open to conversations about business and consulting analytics roles.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="https://www.linkedin.com/in/gabe-light" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn ghost" href="mailto:lighgm22@wfu.edu">Email</a>
+      <a class="btn ghost" href="https://github.com/gabelight42" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    &copy; 2026 Gabe Light &middot; Built for BAN-6004 Market-Facing Portfolio
+  </div>
+</footer>
+</body>
+</html>
