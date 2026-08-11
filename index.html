@@ -27,6 +27,8 @@
   a { color: var(--gold-dark); text-decoration: none; }
   a:hover { text-decoration: underline; }
   .wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
   header.nav {
     position: sticky; top: 0; z-index: 50;
     background: rgba(250,250,248,0.9);
@@ -37,12 +39,15 @@
     max-width: 980px; margin: 0 auto; padding: 14px 24px;
     display: flex; align-items: center; justify-content: space-between;
   }
-  .brand { font-weight: 700; letter-spacing: 0.02em; }
+  .brand { font-weight: 700; letter-spacing: 0.02em; display: flex; align-items: center; gap: 10px; }
+  .avatar { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); }
   .nav-links { display: flex; gap: 22px; font-size: 14px; }
   .nav-links a { color: var(--ink); }
   @media (max-width: 640px) {
     .nav-links { gap: 12px; font-size: 12.5px; }
   }
+
+  /* Hero */
   .hero {
     padding: 72px 0 56px;
     border-bottom: 1px solid var(--line);
@@ -62,10 +67,13 @@
   .btn.primary:hover { background: #000; text-decoration: none; }
   .btn.ghost { background: transparent; color: var(--ink); }
   .btn.ghost:hover { background: var(--ink); color: #fff; text-decoration: none; }
+
   section { padding: 56px 0; border-bottom: 1px solid var(--line); }
   section:last-of-type { border-bottom: none; }
   h2 { font-size: 26px; margin: 0 0 8px; }
   .section-sub { color: var(--gray); margin: 0 0 28px; max-width: 680px; }
+
+  /* Narrative */
   .narrative-grid {
     display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
   }
@@ -81,12 +89,16 @@
   @media (max-width: 720px) {
     .narrative-grid { grid-template-columns: 1fr; }
   }
+
+  /* Video */
   .video-box {
     background: var(--card); border: 1px dashed #c9c5b8; border-radius: var(--radius);
     aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center;
     flex-direction: column; text-align: center; color: var(--gray); padding: 24px;
   }
   .video-box .icon { font-size: 34px; margin-bottom: 10px; }
+
+  /* Resume */
   .resume-panel {
     display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; align-items: start;
   }
@@ -103,6 +115,8 @@
     .resume-panel { grid-template-columns: 1fr; }
     .resume-embed { height: 380px; }
   }
+
+  /* Projects */
   .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
   .project-card {
     background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
@@ -122,16 +136,21 @@
     border-style: dashed; color: var(--gray); min-height: 180px;
   }
   @media (max-width: 720px) { .project-grid { grid-template-columns: 1fr; } }
+
+  /* Commercial awareness */
   .insight-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .insight-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
   .insight-card h4 { margin: 0 0 8px; font-size: 15px; }
   .insight-card p { margin: 0; font-size: 14px; color: var(--gray); }
   @media (max-width: 720px) { .insight-grid { grid-template-columns: 1fr; } }
+
+  /* Skills */
   .pill-row { display: flex; flex-wrap: wrap; gap: 10px; }
   .pill {
     background: var(--card); border: 1px solid var(--line); padding: 7px 14px;
     border-radius: 999px; font-size: 13.5px;
   }
+
   footer {
     padding: 40px 0 60px; text-align: center; color: var(--gray); font-size: 14px;
   }
@@ -139,9 +158,10 @@
 </style>
 </head>
 <body>
+
 <header class="nav">
   <div class="nav-inner">
-    <div class="brand">Gabe Light</div>
+    <div class="brand"><img class="avatar" src="avatar.jpg" alt="Gabe Light">Gabe Light</div>
     <nav class="nav-links">
       <a href="#narrative">Narrative</a>
       <a href="#video">Video</a>
@@ -152,9 +172,10 @@
     </nav>
   </div>
 </header>
+
 <section class="hero">
   <div class="wrap">
-    <div class="eyebrow">Hybrid Track &middot; Sports Analytics → Business &amp; Consulting Analytics</div>
+    <div class="eyebrow">Hybrid Track &middot; Sports Analytics â Business &amp; Consulting Analytics</div>
     <h1>Gabe Light</h1>
     <p class="lede">Data Analyst and MS Business Analytics candidate at Wake Forest, translating high-stakes sports analytics work into decision-ready insight for business and consulting environments.</p>
     <div class="cta-row">
@@ -164,6 +185,7 @@
     </div>
   </div>
 </section>
+
 <section id="narrative">
   <div class="wrap">
     <h2>Track Alignment &amp; Narrative</h2>
@@ -181,6 +203,7 @@
     <p class="bridge">Sports Analytics Experience &nbsp;&rarr;&nbsp; Transferable Skills &nbsp;&rarr;&nbsp; Business &amp; Consulting Analytics</p>
   </div>
 </section>
+
 <section id="video">
   <div class="wrap">
     <h2>Video Introduction</h2>
@@ -192,6 +215,7 @@
     </div>
   </div>
 </section>
+
 <section id="resume">
   <div class="wrap">
     <h2>Resume</h2>
@@ -215,6 +239,7 @@
     </div>
   </div>
 </section>
+
 <section id="projects">
   <div class="wrap">
     <h2>Work Evidence &amp; Projects</h2>
@@ -247,6 +272,7 @@
     </div>
   </div>
 </section>
+
 <section id="awareness">
   <div class="wrap">
     <h2>Commercial Awareness</h2>
@@ -267,6 +293,7 @@
     </div>
   </div>
 </section>
+
 <section>
   <div class="wrap">
     <h2>Skills</h2>
@@ -283,6 +310,7 @@
     </div>
   </div>
 </section>
+
 <section id="contact">
   <div class="wrap">
     <h2>Contact</h2>
@@ -294,10 +322,12 @@
     </div>
   </div>
 </section>
+
 <footer>
   <div class="wrap">
     &copy; 2026 Gabe Light &middot; Built for BAN-6004 Market-Facing Portfolio
   </div>
 </footer>
+
 </body>
 </html>
